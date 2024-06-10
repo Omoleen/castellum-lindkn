@@ -5,7 +5,7 @@ import "./index.css";
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const BACKEND_BASE_URL = "https://castellum-mvp.azurewebsites.net/api/employees";
+const BACKEND_BASE_URL = "https://castellum-mvp.azurewebsites.net/api";
 
 
 const SignIn = () => {
