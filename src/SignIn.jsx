@@ -2,7 +2,7 @@
 
 import "./index.css";
 
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const BACKEND_BASE_URL = "https://castellum-mvp.azurewebsites.net/api";
@@ -10,6 +10,7 @@ const BACKEND_BASE_URL = "https://castellum-mvp.azurewebsites.net/api";
 
 const SignIn = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   console.log(id);
   useEffect(() => {
 
@@ -34,25 +35,39 @@ const SignIn = () => {
   }
   , [id]);
 
+  // function handleClick(e) {
+  //   console.log("Joining meeting")
+  //   console.log("compromised")
+  //   const meetingId = id;
+  //     console.log(meetingId);
+  //     let url = `${BACKEND_BASE_URL}/phishing/campaigns/${meetingId}/compromised/`;
+  //     fetch(url, {
+  //       method: "PATCH",
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({})
+  //     }).then(response => {
+  //       console.log(response);
+  //     }).catch(error => {
+  //       console.log(error);
+  //     }
+  //     )
+  // }
+
   function handleClick(e) {
-    console.log("Joining meeting")
-    console.log("compromised")
     const meetingId = id;
-      console.log(meetingId);
-      let url = `${BACKEND_BASE_URL}/phishing/campaigns/${meetingId}/compromised/`;
-      fetch(url, {
-        method: "PATCH",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-      }).then(response => {
-        console.log(response);
-      }).catch(error => {
-        console.log(error);
-      }
-      )
+    let url = `${BACKEND_BASE_URL}/phishing/campaigns/${meetingId}/compromised/`;
+    fetch(url, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({})
+    });
+    navigate(`/${id}/phished`);
   }
+
 
   return (
     <div>
